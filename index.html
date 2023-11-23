@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <!-- Add Bootstrap CSS link -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .card {
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title text-center">Login</h5>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+        </div>
+        <div class="form-group">
+          <label for="userType">User Type</label>
+          <select class="form-control" id="userType" required>
+            <option value="patient">Patient</option>
+            <option value="healthProfessional">Health Professional</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-primary btn-block" onclick="login()">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Bootstrap JS and Popper.js scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Add your login script -->
+  <script>
+    function login() {
+      // Retrieve user input
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const userType = document.getElementById('userType').value;
+
+      // Make an API request to your login endpoint
+      fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password,
+          userType,
+        }),
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Handle the response, e.g., store the token and redirect to another page
+        console.log('Login successful. Token:', data.token);
+      })
+      .catch(error => {
+        console.error('Error during login:', error);
+        // Handle the error, e.g., display an error message
+      });
+    }
+  </script>
+</body>
+</html>

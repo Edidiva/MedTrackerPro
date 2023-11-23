@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup and OTP Verification</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #signup-form, #otp-verification {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    input, button {
+      margin: 10px;
+      padding: 8px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    button {
+      cursor: pointer;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px;
+    }
+
+    #otp-verification {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="signup-form">
+    <h2>Signup</h2>
+    <input type="text" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <input type="text" id="firstName" placeholder="First Name">
+    <input type="text" id="lastName" placeholder="Last Name">
+    <input type="text" id="additionalField" placeholder="Additional Field (e.g., Date of Birth)">
+    <button onclick="signup()">Signup</button>
+  </div>
+
+  <div id="otp-verification">
+    <h2>OTP Verification</h2>
+    <p>An OTP has been sent to your email. Enter the code below:</p>
+    <input type="text" id="otp" placeholder="Enter OTP">
+    <button onclick="verifyOTP()">Verify OTP</button>
+  </div>
+
+  <script>
+    async function signup() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const firstName = document.getElementById('firstName').value;
+      const lastName = document.getElementById('lastName').value;
+      const additionalField = document.getElementById('additionalField').value;
+
+      // Make API call to initiate signup with email, password, and additionalField
+      // Display success message and switch to OTP verification section
+
+      document.getElementById('signup-form').style.display = 'none';
+      document.getElementById('otp-verification').style.display = 'flex';
+    }
+
+    async function verifyOTP() {
+      const otp = document.getElementById('otp').value;
+
+      // Make API call to verify OTP
+      // Display success message and redirect to dashboard
+
+      alert('OTP verified successfully!');
+      window.location.href = '/dashboard';
+    }
+  </script>
+</body>
+</html>
