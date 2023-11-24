@@ -16,12 +16,26 @@ class AuthRoute {
     
     this.router.post(
       `${this.path}/user/signup`,
-      useCatchErrors(this.authController.Signup.bind(this.authController))
+      useCatchErrors(this.authController.SignUp.bind(this.authController))
     );
     this.router.post(
-      `${this.path}/login`,
-      useCatchErrors(this.authController.login.bind(this.authController))
+      `${this.path}/user/login`,
+      useCatchErrors(this.authController.Login.bind(this.authController))
     );
+    this.router.post(
+      `${this.path}/user/verifyOtp`,
+      useCatchErrors(this.authController.verifyOTP.bind(this.authController))
+    );
+    this.router.post(
+      `${this.path}/user/forgetPassword`,
+      useCatchErrors(this.authController.forgetPassword.bind(this.authController))
+    );
+    this.router.post(
+      `${this.path}/user/verifyResetOtp`,
+      useCatchErrors(this.authController.verifyResetOTP.bind(this.authController))
+    );
+
+
   }
 }
 

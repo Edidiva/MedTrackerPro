@@ -2,7 +2,7 @@ const dotenv = require("dotenv");
 const ENV = require("../config/env");
 const nodemailer = require('nodemailer');
 
-const sendVerificationEmail = (email, otp, callback) => {
+const sendVerificationEmail = (email, otp, text, callback) => {
   // Send OTP to the user's email
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -16,7 +16,7 @@ const sendVerificationEmail = (email, otp, callback) => {
     from: 'edikanakpan5@gmail.com',
     to: email,
     subject: 'Verify Your Email',
-    text: `You are receiving this message from MedTrackerPro.\nYour verification code is: ${otp}`,
+    text: `You are receiving this message from MedTrackerPro.\nYour ${text}: ${otp}`,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {

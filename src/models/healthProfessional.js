@@ -2,9 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const healthProfessionalSchema = new Schema({
-  name: {
+  firstName: {
     type: String,
-    required: true,
+    required: false,
+  },
+  lastName: {
+    type: String,
+    required: false,
   },
   email: {
     type: String,
@@ -25,7 +29,7 @@ const healthProfessionalSchema = new Schema({
   
   specialty: {
     type: String,
-    required: true,
+    required: false,
   },
 
   otp: {

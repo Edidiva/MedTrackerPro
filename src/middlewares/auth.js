@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-const { Patient, HealthProfessional } = require('./models'); 
+const HealthProfessional = require('../models/healthProfessional');
+const Patient = require('../models/patient');
 const dotenv = require("dotenv");
 const ENV = require("../config/env");
 dotenv.config()
@@ -19,9 +20,9 @@ const isAuthenticated = async (req, res, next) => {
     // Check the user type and retrieve the user from the appropriate model
     let user;
     if (decoded.userType === 'patient') {
-      user = await Patient.findById(decoded.userEmail);
+      user = await Patient.findById(decoded.userId);
     } else if (decoded.userType === 'healthProfessional') {
-      user = await HealthProfessional.findById(decoded.userEmail);
+      user = await HealthProfessional.findById(decoded.userId);
     } else {
       return res.status(401).json({ error: 'Unauthorized - Invalid user type' });
     }

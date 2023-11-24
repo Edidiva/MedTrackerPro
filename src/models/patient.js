@@ -2,9 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const patientSchema = new Schema({
-  name: {
+  firstName: {
     type: String,
-    required: true,
+    required: false,
+  },
+  lastName: {
+    type: String,
+    required: false,
   },
   email: {
     type: String,
@@ -24,7 +28,7 @@ const patientSchema = new Schema({
   
   dateOfBirth: {
     type: Date,
-    required: true,
+    required: false,
   },
   otp: {
     type: Number,
