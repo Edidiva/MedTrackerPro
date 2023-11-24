@@ -42,7 +42,6 @@ const healthProfessionalSchema = new Schema({
   },
   phoneNumber :{
     type:Number,
-    unique:true,
     required:false,
   }
 });
