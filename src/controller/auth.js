@@ -44,7 +44,7 @@ class AuthController extends BaseController {
     }
     const existingUser = await UserModel.findOne({ email });
 
-    if (existingUser && existingUser.verified) {
+    if (existingUser) {
       return this.error(res, '--error', 'Invalid or already verified email address', 404, null);
     }
     const hashedPassword = await bcrypt.hash(password, 10);
