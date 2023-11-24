@@ -39,7 +39,6 @@ const patientSchema = new Schema({
   },
   phoneNumber :{
     type:Number,
-    unique:true,
     required:false,
   }
 });
