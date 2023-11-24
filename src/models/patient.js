@@ -40,7 +40,12 @@ const patientSchema = new Schema({
   phoneNumber :{
     type:Number,
     required:false,
-  }
+  },
+  gender: {
+    type: String,
+    enum: ['male', 'female', 'preferNotToSay'],
+    default: 'preferNotToSay',
+  },
 });
 
 const Patient = mongoose.model('Patient', patientSchema);

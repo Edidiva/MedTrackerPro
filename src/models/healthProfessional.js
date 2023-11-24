@@ -31,6 +31,11 @@ const healthProfessionalSchema = new Schema({
     type: String,
     required: false,
   },
+   gender: {
+    type: String,
+    enum: ['male', 'female', 'preferNotToSay'],
+    default: 'preferNotToSay',
+  },
 
   otp: {
     type: Number, 

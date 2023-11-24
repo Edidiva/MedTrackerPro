@@ -43,6 +43,7 @@ const updateUserValidation = (userType) => {
         then: Joi.string().required(),
         otherwise: Joi.optional(),
       }),
+      gender: Joi.string().valid('male', 'female', 'preferNotToSay').required(),
     }).custom((value, helpers) => {
       const { userType } = value;
   
